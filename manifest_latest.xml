@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
+           xsi:type="MailApp">
+
+  <Id>05c2e1c9-3e1d-406e-9a91-e9ac64854144</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>HSBC</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+
+  <DisplayName DefaultValue="Suite"/>
+  <Description DefaultValue="PS addin to help with your mails."/>
+
+  <IconUrl DefaultValue="https://dummyimage.com/64x64/0078d4/ffffff.png"/>
+  <HighResolutionIconUrl DefaultValue="https://dummyimage.com/128x128/0078d4/ffffff.png"/>
+  <SupportUrl DefaultValue="https://test.io/support"/>
+
+  <AppDomains>
+    <AppDomain>https://test.io</AppDomain>
+  </AppDomains>
+
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+
+  <Requirements>
+    <Sets DefaultMinVersion="1.10">
+      <Set Name="Mailbox"/>
+    </Sets>
+  </Requirements>
+
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://test.io"/>
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+
+  <Permissions>ReadWriteItem</Permissions>
+
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+  </Rule>
+
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.10">
+        <bt:Set Name="Mailbox"/>
+      </bt:Sets>
+    </Requirements>
+
+    <Hosts>
+      <Host xsi:type="MailHost">
+        <DesktopFormFactor>
+
+          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+            <OfficeTab id="TabDefault">
+
+              <Group id="PS.Group">
+                <Label resid="Group.Label"/>
+
+                <Control xsi:type="Button" id="PS.TaskpaneButton">
+                  <Label resid="Button.Label"/>
+
+                  <Supertip>
+                    <Title resid="Button.Label"/>
+                    <Description resid="Button.Tooltip"/>
+                  </Supertip>
+
+                  <Icon>
+                    <bt:Image size="16" resid="Icon16"/>
+                    <bt:Image size="32" resid="Icon32"/>
+                    <bt:Image size="80" resid="Icon80"/>
+                  </Icon>
+
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="Taskpane.Url"/>
+                  </Action>
+
+                </Control>
+              </Group>
+
+            </OfficeTab>
+          </ExtensionPoint>
+
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+
+      <bt:Images>
+        <bt:Image id="Icon16" DefaultValue="https://dummyimage.com/16x16/0078d4/ffffff.png"/>
+        <bt:Image id="Icon32" DefaultValue="https://dummyimage.com/32x32/0078d4/ffffff.png"/>
+        <bt:Image id="Icon80" DefaultValue="https://dummyimage.com/x80/0078d4/ffffff.png"/>
+      </bt:Images>
+
+      <bt:Urls>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://test.io/auth.html"/>
+      </bt:Urls>
+
+      <bt:ShortStrings>
+        <bt:String id="Group.Label" DefaultValue="Productivity Suite"/>
+        <bt:String id="Button.Label" DefaultValue="Open Productivity Suite"/>
+      </bt:ShortStrings>
+
+      <bt:LongStrings>
+        <bt:String id="Button.Tooltip" DefaultValue="Open Productivity Suite"/>
+      </bt:LongStrings>
+
+    </Resources>
+
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1"
+                     xsi:type="VersionOverridesV1_1">
+
+      <WebApplicationInfo>
+         <Id>a1983fcd-e21e-43a4-9a38-6b9c2fa22f35</Id>
+         <Resource>api://a1983fcd-e21e-43a4-9a38-6b9c2fa22f35</Resource>
+         <Scopes>
+            <Scope>openid</Scope>
+            <Scope>profile</Scope>
+            <Scope>Mail.Read</Scope>
+         </Scopes>
+      </WebApplicationInfo>
+
+   </VersionOverrides>
+
+  </VersionOverrides>
+
+</OfficeApp>
